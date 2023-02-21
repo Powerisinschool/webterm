@@ -1,0 +1,42 @@
+body {
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 16px;
+    margin: 0;
+}
+
+#terminal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#output {
+    background-color: black;
+    color: white;
+    padding: 8px;
+    min-height: 400px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+#input-container {
+    background-color: black;
+    padding: 8px;
+    display: flex;
+}
+
+#prompt {
+    color: #7f8c8d;
+    font-weight: bold;
+    padding-right: 8px;
+}
+
+#input {
+    background-color: transparent;
+    color: white;
+    font-family: "Ubuntu Mono", monospace;
+    font-size: 16px;
+    border: none;
+    width: 100%;
+    outline: none;
+}
