@@ -36,6 +36,8 @@ const processCommand = (command: string): string => {
             Type \`help name\` to find out more about the function \`name\`.`;
         case "ls":
             return "/";
+        case "dir":
+            return "/";
         default:
             return "Command does not exist.";
     }
