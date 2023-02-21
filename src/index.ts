@@ -9,6 +9,7 @@ input.focus();
 
 output.addEventListener("click", (e) => {
     input.focus();
+    e.preventDefault();
 })
 
 input.addEventListener('keydown', (e) => {
@@ -19,7 +20,7 @@ input.addEventListener('keydown', (e) => {
             output.innerHTML = '';
         } else {
             const result = processCommand(command);
-            output.innerHTML += `${promptStr}${command}<br />${result}<br />`;
+            output.innerHTML += `${promptStr}${command}<br />${result.replace("\n", "<br />")}<br />`;
         }
 
         input.value = '';
@@ -31,7 +32,8 @@ const processCommand = (command: string): string => {
     // Process the command here and return the output
     switch (command) {
         case "help":
-            return "help functions";
+            return `Powerisinschool - webterm
+            Type \`help name\` to find out more about the function \`name\`.`;
         case "ls":
             return "/";
         default:
