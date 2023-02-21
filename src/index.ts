@@ -19,7 +19,7 @@ input.addEventListener('keydown', (e) => {
 
         if (command === 'clear') {
             output.innerHTML = '';
-        } else if (command === '') {
+        } else if (command == '') {
             output.innerHTML += "---<br />";
         } else {
             const result = processCommand(command);
