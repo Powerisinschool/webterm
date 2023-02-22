@@ -2,7 +2,9 @@ import "./style.scss";
 import commands from "./commands";
 
 const promptStr = ">> ";
-let commandHistory: string[] = []
+let commandHistory: string[] = [];
+let i: number = 0;
+let currentCommand: string = "";
 
 const input = document.getElementById('input') as HTMLTextAreaElement;
 const output = document.getElementById('output') as HTMLDivElement;
@@ -15,6 +17,7 @@ output.addEventListener("click", (e) => {
 
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        i = 0;
         const command = input.value.trim();
 
         if (command === 'clear') {
@@ -36,7 +39,25 @@ input.addEventListener('keydown', (e) => {
         input.value = '';
         e.preventDefault();
     } else if (e.key === "ArrowUp") {
-        input.value = commandHistory.slice(-1).join("");
+        // prevent the default action of the up arrow key
+        e.preventDefault();
+        // save whatever the user was typing
+        if (i == 0) currentCommand = input.value;
+        // return if there's no previous command
+        if (i == commandHistory.length) return;
+        // get the previous command from the history array
+        const previousCommand = commandHistory[commandHistory.length - ++i];
+        // display the previous command in the input field
+        !!previousCommand && (input.value = previousCommand);
+    } else if (e.key === "ArrowDown") {
+        // prevent the default action of the down arrow key
+        e.preventDefault();
+        // return if there's no next command
+        if (i == 0) return;
+        // get the next command from the history array
+        const nextCommand = commandHistory[commandHistory.length - --i];
+        // display the next command in the input field
+        !!nextCommand ? input.value = nextCommand : input.value = currentCommand;
     }
 });
 
