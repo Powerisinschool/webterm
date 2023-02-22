@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
 body {
     font-family: "Ubuntu Mono", monospace;
     font-size: 16px;
@@ -19,6 +21,16 @@ body {
     overflow-y: auto;
 }
 
+#output::selection,
+#output > *::selection {
+    background-color: yellow;
+    color: black;
+}
+
+#output a {
+    color: white;
+}
+
 #input-container {
     background-color: black;
     padding: 8px;
@@ -29,6 +41,7 @@ body {
     color: #7f8c8d;
     font-weight: bold;
     padding-right: 8px;
+    user-select: none;
 }
 
 #input {
@@ -39,4 +52,9 @@ body {
     border: none;
     width: 100%;
     outline: none;
+}
+
+.highlight {
+    background-color: white;
+    color: blueviolet;
 }

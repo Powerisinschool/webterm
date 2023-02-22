@@ -9,7 +9,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'My Portfolio',
+            title: 'WebTerm',
             template: "src/index.html"
         }),
         new MiniCssExtractPlugin(),
