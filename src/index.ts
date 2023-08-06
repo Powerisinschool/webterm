@@ -31,13 +31,20 @@ output.addEventListener("mouseup", (e) => {
     }
 });
 
+const clear = () => {
+    output.innerHTML = "";
+}
+
 input.addEventListener('keydown', (e) => {
+    if (e.altKey && e.key == 'l') {
+        clear();
+    }
     if (e.key === 'Enter') {
         i = 0;
         const command = input.value.trim();
 
         if (command === 'clear') {
-            output.innerHTML = '';
+            clear();
             commandHistory.push(command);
         } else if (command == '') {
             output.innerHTML += "---<br />";
