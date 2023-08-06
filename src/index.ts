@@ -23,7 +23,7 @@ output.addEventListener("mouseup", (e) => {
     
     if (window.getSelection && window.getSelection().type === 'Range') {
         selectedText = window.getSelection().toString();
-        console.log(selectedText);
+        // console.log(selectedText);
     } else {
         selectedText = ""
         input.focus();
@@ -36,7 +36,9 @@ const clear = () => {
 }
 
 input.addEventListener('keydown', (e) => {
-    if (e.altKey && e.key == 'l') {
+    if (e.ctrlKey && e.key == 'l') {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         clear();
     }
     if (e.key === 'Enter') {
@@ -50,6 +52,9 @@ input.addEventListener('keydown', (e) => {
             output.innerHTML += "---<br />";
         } else if (command === 'exit') {
             output.innerHTML = '';
+            console.info("Due to limitations set by JavaScript, a window can only be closed if it has been opened by the script.");
+            console.info("Therefore, you just have to click the 'x' button!");
+            console.info("And I know that this message is in the console not primarily visible.")
         } else {
             const result = processCommand(command);
             output.innerHTML += `${promptStr}${command}<br />`
