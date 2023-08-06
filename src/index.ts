@@ -11,9 +11,25 @@ const output = document.getElementById('output') as HTMLDivElement;
 
 input.focus();
 
-output.addEventListener("click", (e) => {
-    input.focus();
-})
+var selectedText = "";
+
+output.addEventListener("mouseup", (e) => {
+    if (e.button == 2 && selectedText) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        navigator.clipboard.writeText(selectedText);
+        alert("Copied to clipboard");
+    }
+    
+    if (window.getSelection && window.getSelection().type === 'Range') {
+        selectedText = window.getSelection().toString();
+        console.log(selectedText);
+    } else {
+        selectedText = ""
+        input.focus();
+        e.stopImmediatePropagation();
+    }
+});
 
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
