@@ -23,13 +23,14 @@ output.addEventListener("mouseup", (e) => {
     
     if (window.getSelection && window.getSelection().type === 'Range') {
         selectedText = window.getSelection().toString();
-        // console.log(selectedText);
     } else {
         selectedText = ""
         input.focus();
         e.stopImmediatePropagation();
     }
 });
+
+output.addEventListener('contextmenu', e => e.preventDefault());
 
 const clear = () => {
     output.innerHTML = "";
